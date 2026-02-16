@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "material-symbols";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+/*@custom-variant dark (&:where(.dark-mode, .dark-mode *));*/
+
+:root {
+    --primary: var(--color-orange-400);
+    --primary-hover: var(--color-orange-500);
+    --primary-light: var(--color-orange-50);
+    --secondary: var(--color-slate-500);
+}
+
+.purple-mode {
+    --primary: var(--color-purple-400);
+    --primary-hover: var(--color-purple-500);
+    --primary-light: var(--color-purple-50);
+    --secondary: var(--color-slate-300);
+}
+
+@theme {
+    --color-primary: var(--primary);
+    --color-primary-hover: var(--primary-hover);
+    --color-primary-light: var(--primary-light);
+    --color-secondary: var(--secondary);
+}
+
+
+*, html, body {
+    font-family: "Plus Jakarta Sans", "sans-serif";
+}
+
+.sparkle-pattern {
+    background-image: radial-gradient(#ee8c2b 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+    opacity: 0.15;
+}
+
+.spark-float {
+    position: absolute;
+    transition: transform 0.3s ease;
+}
