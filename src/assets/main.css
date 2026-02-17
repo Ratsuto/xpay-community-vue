@@ -1,30 +1,86 @@
 @import "tailwindcss";
 @import "material-symbols";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-/*@custom-variant dark (&:where(.dark-mode, .dark-mode *));*/
+/*@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));*/
+@custom-variant dark (&:where(.dark-mode, .dark-mode *));
 
 :root {
     --primary: var(--color-orange-400);
     --primary-hover: var(--color-orange-500);
-    --primary-light: var(--color-orange-50);
-    --secondary: var(--color-slate-500);
+    --background-color-light: var(--color-orange-50);
+    --background-white: var(--color-white);
+    --background-secondary: var(--color-orange-100);
+    --secondary: var(--color-orange-100);
+    --secondary-hover: var(--color-orange-200);
+    --success: var(--color-green-500);
+    --danger: var(--color-red-500);
+    --info: var(--color-blue-100);
 }
 
-.purple-mode {
-    --primary: var(--color-purple-400);
-    --primary-hover: var(--color-purple-500);
-    --primary-light: var(--color-purple-50);
-    --secondary: var(--color-slate-300);
+.indigo-mode {
+    --primary: var(--color-indigo-400);
+    --primary-hover: var(--color-indigo-500);
+    --background-color-light: var(--color-indigo-50);
+    --background-white: var(--color-white);
+    --background-secondary: var(--color-indigo-100);
+    --secondary: var(--color-indigo-100);
+    --secondary-hover: var(--color-indigo-200);
+    --success: var(--color-green-500);
+    --danger: var(--color-red-500);
+    --info: var(--color-blue-100);
+}
+
+.blue-mode {
+    --primary: var(--color-blue-400);
+    --primary-hover: var(--color-blue-500);
+    --background-color-light: var(--color-blue-50);
+    --background-white: var(--color-white);
+    --background-secondary: var(--color-blue-100);
+    --secondary: var(--color-blue-100);
+    --secondary-hover: var(--color-blue-200);
+    --success: var(--color-green-500);
+    --danger: var(--color-red-500);
+    --info: var(--color-blue-100);
+}
+
+/*.dark {
+    --primary: var(--color-zinc-600);
+    --primary-hover: var(--color-zinc-700);
+    --background-color-light: var(--color-zinc-950);
+    --background-white: var(--color-zinc-900);
+    --background-secondary: var(--color-blue-100);
+    --secondary: var(--color-blue-100);
+    --secondary-hover: var(--color-blue-200);
+    --success: var(--color-green-500);
+    --danger: var(--color-red-500);
+    --info: var(--color-blue-100);
+}*/
+
+.glass-mode {
+    --primary: var(--color-gray-400);
+    --primary-hover: rgba(118, 165, 175);
+    --background-white: rgba(218, 217, 217, 0.15);
+    --background-color-light: rgba(180, 180, 180);
+    --background-secondary: rgba(153, 153, 153);
+    --secondary: var(--color-blue-100);
+    --secondary-hover: var(--color-blue-200);
+    --success: var(--color-green-500);
+    --danger: var(--color-red-500);
+    --info: var(--color-blue-100);
 }
 
 @theme {
     --color-primary: var(--primary);
     --color-primary-hover: var(--primary-hover);
-    --color-primary-light: var(--primary-light);
+    --color-background-white: var(--background-white);
+    --color-background-color-light: var(--background-color-light);
+    --color-background-secondary: var(--background-secondary);
     --color-secondary: var(--secondary);
+    --color-secondary-hover: var(--secondary-hover);
+    --color-success: var(--success);
+    --color-danger: var(--danger);
+    --color-info: var(--info);
 }
-
 
 *, html, body {
     font-family: "Plus Jakarta Sans", "sans-serif";
@@ -39,4 +95,27 @@
 .spark-float {
     position: absolute;
     transition: transform 0.3s ease;
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e4e4e7;
+    border-radius: 20px;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
