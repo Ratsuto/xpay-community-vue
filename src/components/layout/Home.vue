@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from 'vue'
-
 const postText = ref("");
+
 </script>
 
 <template>
