@@ -4,6 +4,7 @@ import MainPage from "@/components/auth/MainPage.vue";
 import Register from "@/components/auth/Register.vue";
 import RegisterSuccess from "@/components/auth/RegisterSuccess.vue";
 import Home from "@/components/layout/Home.vue";
+import Discover from "@/components/contents/Discover.vue";
 
 const routes = [
 	{path: '/', redirect: '/login'},
@@ -15,7 +16,11 @@ const routes = [
 			{path: '/register-success', name: 'RegisterSuccess', component: RegisterSuccess},
 		]
 	},
-	{path: '/home', name: 'Home', component: Home},
+	{
+		path: '/home', name: 'Home', component: Home, children: [
+			{path: '', name: 'Discover', component: Discover},
+		]
+	},
 ]
 
 const router = createRouter({

@@ -4,7 +4,7 @@ import {motion} from "motion-v";
 
 <template>
   <body class="bg-background-color-light dark:bg-zinc-900 text-text-main antialiased min-h-screen flex items-center justify-center p-4">
-  <div class="max-w-275 w-full bg-background-white dark:bg-zinc-800 backdrop-blur-md rounded-[3rem] shadow-2xl shadow-primary/30 dark:shadow-zinc-600/50 overflow-hidden flex flex-col md:flex-row min-h-175">
+  <div class="max-w-275 w-full bg-background-white dark:bg-zinc-800 border border-white/20 dark:border-zinc-500/20 backdrop-blur-sm rounded-[3rem] shadow-2xl shadow-primary/30 dark:shadow-zinc-600/50 overflow-hidden flex flex-col md:flex-row min-h-175">
     <div class="md:w-1/2 bg-background-secondary dark:bg-zinc-700 relative overflow-hidden flex flex-col items-center justify-center text-center">
       <div class="absolute inset-0 sparkle-pattern"></div>
 
@@ -24,7 +24,7 @@ import {motion} from "motion-v";
         <span class="material-icons-round text-primary/60 text-3xl">lightbulb</span>
       </div>
 
-      <div class="absolute top-1/2 left-4 -translate-y-1/2 w-8 h-8 bg-primary/30 dark:bg-zinc-500 rounded-full"></div>
+      <div class="absolute top-1/2 left-4 -translate-y-1/2 w-8 h-8 bg-primary/30 dark:bg-zinc-500/50 rounded-full"></div>
 
       <div class="relative z-10">
         <motion.div :initial="{ opacity: 0, scale: 0 }"
