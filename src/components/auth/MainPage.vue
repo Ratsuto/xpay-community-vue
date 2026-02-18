@@ -4,11 +4,11 @@ import {motion} from "motion-v";
 
 <template>
   <body class="bg-background-color-light dark:bg-zinc-900 text-text-main antialiased min-h-screen flex items-center justify-center p-4">
-  <div class="max-w-275 w-full bg-background-white dark:bg-zinc-800 border border-white/20 dark:border-zinc-500/20 backdrop-blur-sm rounded-[3rem] shadow-2xl shadow-primary/30 dark:shadow-zinc-600/50 overflow-hidden flex flex-col md:flex-row min-h-175">
+  <div class="max-w-275 w-full bg-background-card dark:bg-zinc-800 border border-white/20 dark:border-zinc-500/20 backdrop-blur-sm rounded-[3rem] shadow-2xl shadow-primary/30 dark:shadow-zinc-600/50 overflow-hidden flex flex-col md:flex-row min-h-175">
     <div class="md:w-1/2 bg-background-secondary dark:bg-zinc-700 relative overflow-hidden flex flex-col items-center justify-center text-center">
       <div class="absolute inset-0 sparkle-pattern"></div>
 
-      <div class="absolute top-10 left-10 w-16 h-16 bg-background-white/50 dark:bg-zinc-600/50 rounded-2xl rotate-12 flex items-center justify-center">
+      <div class="absolute top-10 left-10 w-16 h-16 bg-background-card/50 dark:bg-zinc-600/50 rounded-2xl rotate-12 flex items-center justify-center">
         <span class="material-icons-round text-primary">auto_awesome</span>
       </div>
 
@@ -16,7 +16,7 @@ import {motion} from "motion-v";
         <span class="material-icons-round text-primary/40">palette</span>
       </div>
 
-      <div class="absolute top-24 right-12 w-14 h-14 bg-background-white/60 dark:bg-zinc-600/70 rounded-3xl -rotate-12 flex items-center justify-center">
+      <div class="absolute top-24 right-12 w-14 h-14 bg-background-card/60 dark:bg-zinc-600/70 rounded-3xl -rotate-12 flex items-center justify-center">
         <span class="material-icons-round text-primary/50 text-2xl">favorite</span>
       </div>
 
@@ -57,7 +57,7 @@ import {motion} from "motion-v";
       </motion.div>
     </div>
 
-    <div class="md:w-1/2 p-8 md:p-16 flex flex-col gap-6 justify-center text-slate-700 dark:text-white bg-background-white dark:bg-zinc-800 backdrop-blur-md relative">
+    <div class="md:w-1/2 p-8 md:p-16 flex flex-col gap-6 justify-center text-slate-700 dark:text-white bg-background-card dark:bg-zinc-800 backdrop-blur-md relative">
       <router-view/>
     </div>
   </div>

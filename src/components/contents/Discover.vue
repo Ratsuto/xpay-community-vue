@@ -8,7 +8,7 @@ const postText = ref("");
   <!-- Search Bar (Top) -->
   <div class="flex items-center relative">
     <span class="material-icons-round absolute left-4 text-slate-500 dark:text-slate-300">search</span>
-    <InputText class="w-full h-12 rounded-full pl-12 bg-background-white dark:bg-zinc-600 border-transparent focus:border-primary"
+    <InputText class="w-full h-12 rounded-full pl-12 bg-background-card dark:bg-zinc-600 border-transparent focus:border-primary"
                placeholder="Search ideas, people, or tags..."/>
   </div>
 

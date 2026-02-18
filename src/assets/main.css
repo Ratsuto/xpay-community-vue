@@ -8,7 +8,7 @@
     --primary: var(--color-orange-400);
     --primary-hover: var(--color-orange-500);
     --background-color-light: var(--color-orange-50);
-    --background-white: var(--color-white);
+    --background-card: var(--color-white);
     --background-secondary: var(--color-orange-100);
     --secondary: var(--color-orange-100);
     --secondary-hover: var(--color-orange-200);
@@ -22,7 +22,7 @@
     --primary: var(--color-indigo-400);
     --primary-hover: var(--color-indigo-500);
     --background-color-light: var(--color-indigo-50);
-    --background-white: var(--color-white);
+    --background-card: var(--color-white);
     --background-secondary: var(--color-indigo-100);
     --border-white: var(--color-white);
     --secondary: var(--color-indigo-100);
@@ -37,7 +37,7 @@
     --primary: var(--color-blue-400);
     --primary-hover: var(--color-blue-500);
     --background-color-light: var(--color-blue-50);
-    --background-white: var(--color-white);
+    --background-card: var(--color-white);
     --background-secondary: var(--color-blue-100);
     --border-white: var(--color-white);
     --secondary: var(--color-blue-100);
@@ -51,7 +51,7 @@
 .glass-mode {
     --primary: var(--color-gray-400);
     --primary-hover: rgba(118, 165, 175);
-    --background-white: rgba(218, 217, 217, 0.15);
+    --background-card: rgba(218, 217, 217, 0.15);
     --background-color-light: rgba(180, 180, 180);
     --background-secondary: rgba(153, 153, 153);
     --border-white: var(--color-white);
@@ -66,7 +66,7 @@
 @theme {
     --color-primary: var(--primary);
     --color-primary-hover: var(--primary-hover);
-    --color-background-white: var(--background-white);
+    --color-background-card: var(--background-card);
     --color-background-color-light: var(--background-color-light);
     --color-background-secondary: var(--background-secondary);
     --color-border-white: var(--border-white);
