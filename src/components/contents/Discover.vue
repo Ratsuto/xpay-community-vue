@@ -30,7 +30,7 @@ const postText = ref("");
                       placeholder="What's sparking your joy today?"
                       class="w-full bg-transparent border-none shadow-none appearance-none min-h-3rem placeholder-gray-400"/>
 
-        <div class="flex flex-wrap items-center justify-between mt-4 gap-4">
+        <div class="sm:flex grid grid-cols-1 items-center justify-between mt-4 gap-4">
           <div class="flex gap-2">
             <Button class="flex items-center gap-2 px-3 border-none rounded-full bg-info text-blue-600 hover:bg-blue-200 transition-colors text-sm font-semibold">
               <span class="material-icons-round scale-90">image</span>
