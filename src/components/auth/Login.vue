@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref, watch} from 'vue'
 import {motion} from "motion-v";
+import router from "@/router/index.js";
 
 const theme = ref([
   {name: 'Default', value: 'light'},
@@ -24,6 +25,10 @@ onMounted(() => {
   const saved = localStorage.getItem('theme')
   if (saved) selectedTheme.value = saved
 })
+
+const handleSignIn = async () => {
+  await router.push({name: 'Home'});
+}
 </script>
 
 <template>
@@ -111,26 +116,26 @@ onMounted(() => {
       <label for="remember"> Keep me logged in </label>
     </motion.div>
 
-    <!--    <motion.div :initial="{opacity: 0, y:20}"
-                    :animate="{opacity: 1, y:0}"
-                    :transition="{duration: 0.3, delay: 1.2}">
-          <Button class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center"
-                  type="submit">
-            <span>Sign In</span>
-            <span class="material-icons-round scale-70">bolt</span>
-          </Button>
-        </motion.div>-->
-
     <motion.div :initial="{opacity: 0, y:20}"
                 :animate="{opacity: 1, y:0}"
                 :transition="{duration: 0.3, delay: 1.2}">
-      <router-link :to="{name: 'Home'}">
-        <Button class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center">
-          <span>Sign In</span>
-          <span class="material-icons-round scale-70">bolt</span>
-        </Button>
-      </router-link>
+      <Button @click="handleSignIn" class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center"
+              type="submit">
+        <span>Sign In</span>
+        <span class="material-icons-round scale-70">bolt</span>
+      </Button>
     </motion.div>
+
+    <!--    <motion.div :initial="{opacity: 0, y:20}"
+                    :animate="{opacity: 1, y:0}"
+                    :transition="{duration: 0.3, delay: 1.2}">
+          <router-link :to="{name: 'Home'}">
+            <Button class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center">
+              <span>Sign In</span>
+              <span class="material-icons-round scale-70">bolt</span>
+            </Button>
+          </router-link>
+        </motion.div>-->
   </form>
 
   <motion.div :initial="{opacity: 0, y:20}"

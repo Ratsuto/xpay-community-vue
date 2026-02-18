@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import {ref} from 'vue';
 
+const menuItems = [
+  {name: 'Discover', route: '/home', icon_name: 'explore'},
+  {name: 'Challenges', route: '/challenge', icon_name: 'bolt'},
+  {name: 'Community', route: '/community', icon_name: 'diversity_2'},
+  {name: 'Saved', route: '/saved', icon_name: 'bookmark'},
+  {name: 'Message', route: '/message', icon_name: 'chat_bubble'},
+]
 </script>
 
 <template>
@@ -15,47 +23,39 @@
     </div>
 
     <!-- Navigation Links -->
-    <nav class="flex-1 space-y-2">
-      <a class="flex items-center gap-4 px-4 py-3 bg-primary text-white rounded-full shadow-glow transition-transform hover:scale-[1.02]" href="#">
-        <span class="material-icons-round">explore</span>
-        <span class="font-bold">Discover</span>
-      </a>
-
-      <a class="flex items-center gap-4 px-4 py-3 text-text-sub dark:text-gray-400 hover:bg-white dark:hover:bg-surface-dark hover:text-primary rounded-2xl transition-colors" href="#">
-        <span class="material-icons-round">bolt</span>
-        <span class="font-bold">Challenges</span>
-      </a>
-
-      <a class="flex items-center gap-4 px-4 py-3 text-text-sub dark:text-gray-400 hover:bg-white dark:hover:bg-surface-dark hover:text-primary rounded-2xl transition-colors" href="#">
-        <span class="material-icons-round">diversity_2</span>
-        <span class="font-bold">Community</span>
-      </a>
-
-      <a class="flex items-center gap-4 px-4 py-3 text-text-sub dark:text-gray-400 hover:bg-white dark:hover:bg-surface-dark hover:text-primary rounded-2xl transition-colors" href="#">
-        <span class="material-icons-round">bookmark</span>
-        <span class="font-bold">Saved</span>
-      </a>
-
-      <a class="flex items-center gap-4 px-4 py-3 text-text-sub dark:text-gray-400 hover:bg-white dark:hover:bg-surface-dark hover:text-primary rounded-2xl transition-colors" href="#">
-        <span class="material-icons-round">chat_bubble</span>
-        <span class="font-bold">Messages</span>
-        <span class="ml-auto bg-red-400 text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
-      </a>
+    <nav class="flex-1 flex flex-col gap-2">
+      <router-link v-for="item in menuItems"
+                   :key="item.name"
+                   :to="item.route"
+                   v-slot="{ isActive, isExactActive}">
+        <div :class="['flex items-center gap-4 px-4 py-3 rounded-full transition-all', isExactActive ?  'bg-primary text-white shadow-glow hover:scale-[1.02]' : 'dark:text-slate-300 hover:bg-white dark:hover:bg-zinc-600 hover:text-primary']">
+          <span class="material-icons-round">{{ item.icon_name }}</span>
+          <span class="font-bold">{{ item.name }}</span>
+          <span v-if="item.name === 'Message'" class="ml-auto bg-red-400 text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+        </div>
+      </router-link>
     </nav>
 
     <!-- User Mini Profile -->
-    <div class="mt-auto pt-6 border-t border-gray-300 dark:border-white/5">
-      <div class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white dark:hover:bg-surface-dark cursor-pointer transition-colors">
-        <img alt="Smiling user portrait"
-             class="w-10 h-10 rounded-full object-cover ring-2 ring-primary p-0.5"
-             data-alt="User profile picture of a smiling woman"
-             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvV2IlEFrCJcKLAzF5-K68N_fXQxygWEVLpTohkbN_p0jwAS2MERTiNgzaGLsaqK-dFGd-CZ5acWA_S2GH3-4vxj3UFyO_O6w1dRPGq7uq-rSku6TI3uhkTpCnqaKqItTyy9vxbcXSbZCbWBEticdNj5vXJJc75YFS6JQbg5evWAD9Y83yIDoLv5aY6XY1yRUCWNI6ItAURTeYUW81qSsub6oFKx59N4lQB42uOHayGSHLUOqeCw5ZbwWCkODrUfWb5Qp_wuDiHAs"/>
-        <div class="flex flex-col">
-          <span class="font-bold text-sm text-gray-900 dark:text-white">Mia Creative</span>
-          <span class="text-xs text-text-sub dark:text-gray-400">@miamakes</span>
+    <div class="mt-auto pt-4 border-t border-gray-300 dark:border-white/5">
+      <router-link :to="{name:'Profile'}"
+                   v-slot="{ isActive, isExactActive}">
+        <div :class="['flex items-center gap-3 p-3 rounded-2xl hover:bg-white dark:hover:bg-surface-dark cursor-pointer transition-colors', isExactActive ? 'bg-white': '']">
+          <Avatar
+              image="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1DHmhRcmxtXH6PQlFigWs50SLdwYlPhprdF5-CFUraKuqlv3GTxYo6_bovEtD_K4IVmQIzR8BytqS_GHOvvYl4W1WNmo-LVy8SPCW92_2vINM6Ue24eBpIPMBDPMQ6Cnx8iY0LcE_yKbt_henje6HIjHkoKI7F0N48qLJ0HgP79WJkK0yt1JzOir-Vn1S1r1kONl2lRNy15gTs9LSduHtuqhHjTMAphp3Idjd1tfoT84st16GFWQTOJVOwNGD84Llh6cppL57co"
+              class="w-10 h-10 object-cover ring-2 ring-primary p-0.5"
+              shape="circle"/>
+
+          <div class="flex flex-col">
+            <span class="font-bold text-sm text-gray-900 dark:text-white">Mia Creative</span>
+            <span class="text-xs text-text-sub dark:text-gray-400">@miamakes</span>
+          </div>
+
+          <div class="material-icons-round ml-auto text-gray-400">
+            more_horiz
+          </div>
         </div>
-        <span class="material-icons-round ml-auto text-gray-400">more_horiz</span>
-      </div>
+      </router-link>
     </div>
   </aside>
 </template>

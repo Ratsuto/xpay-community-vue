@@ -15,6 +15,7 @@
     --success: var(--color-green-500);
     --danger: var(--color-red-500);
     --info: var(--color-blue-100);
+    --warning: var(--color-yellow-100);
 }
 
 .indigo-mode {
@@ -29,6 +30,7 @@
     --success: var(--color-green-500);
     --danger: var(--color-red-500);
     --info: var(--color-blue-100);
+    --warning: var(--color-yellow-100);
 }
 
 .blue-mode {
@@ -43,6 +45,7 @@
     --success: var(--color-green-500);
     --danger: var(--color-red-500);
     --info: var(--color-blue-100);
+    --warning: var(--color-yellow-100);
 }
 
 .glass-mode {
@@ -57,6 +60,7 @@
     --success: var(--color-green-500);
     --danger: var(--color-red-500);
     --info: var(--color-blue-100);
+    --warning: var(--color-yellow-100);
 }
 
 @theme {
@@ -71,6 +75,7 @@
     --color-success: var(--success);
     --color-danger: var(--danger);
     --color-info: var(--info);
+    --color-warning: var(--warning);
 }
 
 *, html, body {
@@ -91,6 +96,7 @@
 /* Custom scrollbar for a cleaner look */
 ::-webkit-scrollbar {
     width: 8px;
+    @apply hidden;
 }
 
 ::-webkit-scrollbar-track {

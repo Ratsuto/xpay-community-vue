@@ -151,11 +151,10 @@ const postText = ref("");
         </div>
       </div>
     </article>
+
     <!-- Post 2: Text Based Question -->
-    <article
-        class="bg-gradient-to-br from-pastel-purple to-white dark:from-purple-900/20 dark:to-surface-dark rounded-3xl p-8 shadow-soft border border-purple-100 dark:border-white/5 relative overflow-hidden">
-                    <span
-                        class="material-icons-round absolute -right-4 -bottom-4 text-9xl text-purple-100 dark:text-purple-900/30 -z-0 rotate-12">lightbulb</span>
+    <article class="bg-linear-to-br from-pastel-purple to-white dark:from-purple-900/20 dark:to-surface-dark rounded-3xl p-8 shadow-soft border border-purple-100 dark:border-white/5 relative overflow-hidden">
+      <div class="material-icons-round absolute -right-4 -bottom-4 text-9xl text-purple-100 dark:text-purple-900/30 z-0 rotate-12">lightbulb</div>
       <div class="relative z-10">
         <div class="flex justify-between items-start mb-4">
           <div class="flex items-center gap-3">
@@ -237,6 +236,7 @@ const postText = ref("");
       <div class="text-xs text-text-sub dark:text-gray-400 font-medium">158 votes • 2 days left</div>
     </article>
   </div>
+
   <!-- Loading Indicator -->
   <div class="py-8 flex justify-center">
     <div class="animate-bounce w-3 h-3 bg-primary rounded-full mx-1"></div>
