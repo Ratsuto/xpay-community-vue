@@ -9,7 +9,7 @@
       <img src="/src/assets/images/icons/logo-not-found.png" alt="logo" class="h-64"/>
       <h2 class="text-gray-500">Page does not exist.</h2>
       <router-link to="/home">
-        <Button icon="pi pi-caret-left" label="Back to Home" class="bg-primary hover:bg-primary-hover rounded-full border-none"></Button>
+        <Button icon="pi pi-caret-left" label="Back to Home" class="bg-primary hover:bg-primary-hover dark:text-white rounded-full border-none"></Button>
       </router-link>
     </div>
   </article>
