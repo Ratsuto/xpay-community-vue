@@ -4,7 +4,7 @@ import {ref} from 'vue';
 const menuItems = [
   {name: 'Discover', route: '/home', icon_name: 'explore'},
   {name: 'Challenges', route: '/challenge', icon_name: 'bolt'},
-  {name: 'Community', route: '/community', icon_name: 'diversity_2'},
+  {name: 'Progress', route: '/progress', icon_name: 'diversity_2'},
   {name: 'Saved', route: '/saved', icon_name: 'bookmark'},
   {name: 'Message', route: '/message', icon_name: 'chat_bubble'},
 ]

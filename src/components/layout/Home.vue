@@ -6,7 +6,7 @@ import RightSideBar from "@/components/layout/RightSideBar.vue";
 <template>
   <body class="bg-background-color-light dark:bg-zinc-900 text-slate-700 dark:text-white antialiased min-h-screen">
   <!-- Navbar (Mobile/Tablet Top) & Desktop Wrapper -->
-  <div class="max-w-360 mx-auto min-h-screen flex flex-col md:flex-row">
+  <div class="max-w-390 mx-auto min-h-screen flex flex-col md:flex-row">
     <LeftSideBar/>
     <!-- Main Feed Area -->
     <main class="flex-1 flex flex-col gap-6 p-4 md:p-6 overflow-y-auto">

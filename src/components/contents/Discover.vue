@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref} from "vue";
+import BasicPostLayout from "@/components/layout/BasicPostLayout.vue";
 
 const postText = ref("");
 </script>
@@ -84,73 +85,44 @@ const postText = ref("");
 
   <!-- Feed Content -->
   <div class="space-y-6">
-    <!-- Post 1: Image Showcase -->
-    <article class="bg-white dark:bg-zinc-800 rounded-3xl p-6 shadow-soft hover:shadow-lg transition-shadow duration-300 border border-gray-50 dark:border-white/5">
-      <div class="flex justify-between items-start mb-4">
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <img alt="Author Avatar"
-                 class="w-10 h-10 rounded-full object-cover ring-2 ring-pastel-blue"
-                 data-alt="User avatar of a man with glasses"
-                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6ZGQ-5CZrNFEX45_OXNZJ3urYQWTZhrkpH2HKKVnCPow5Ym0J8EhX9AIyCXq4-mOdUhcjCQPuvi73m6u3WhShZ2QQkRTwJcrE-fNMpqFgHEM4YXLqKwCjSuFJd1yIaC2HFOJQa8sSxzd-4jggWT3vCUox7g9tB-VQJdLikC2s9t-pEMa1OiwUXY5TiDvOgkLknu_NV4GryxViyh9UlTaQ9mkWbvy-88iPUfwBjgyQCSULyuxhJ1ajKY87d8h0yrGFfUhB2I5D-ok"/>
-            <div
-                class="absolute -bottom-1 -right-1 bg-green-400 w-3 h-3 rounded-full border-2 border-white dark:border-surface-dark">
-            </div>
-          </div>
-          <div>
-            <h3 class="font-bold text-gray-900 dark:text-white leading-tight">Alex Rivera</h3>
-            <p class="text-xs text-text-sub dark:text-gray-400 font-medium">2 hours ago • <span
-                class="text-blue-500 bg-blue-50 dark:bg-blue-900/30 px-1.5 py-0.5 rounded-md">UX
-                                        Design</span></p>
-          </div>
+
+    <BasicPostLayout username="Alex Rivera"
+                     :status="true"
+                     time="2 hours ago"
+                     postType="UX Design"
+                     avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuA6ZGQ-5CZrNFEX45_OXNZJ3urYQWTZhrkpH2HKKVnCPow5Ym0J8EhX9AIyCXq4-mOdUhcjCQPuvi73m6u3WhShZ2QQkRTwJcrE-fNMpqFgHEM4YXLqKwCjSuFJd1yIaC2HFOJQa8sSxzd-4jggWT3vCUox7g9tB-VQJdLikC2s9t-pEMa1OiwUXY5TiDvOgkLknu_NV4GryxViyh9UlTaQ9mkWbvy-88iPUfwBjgyQCSULyuxhJ1ajKY87d8h0yrGFfUhB2I5D-ok"
+                     image="https://lh3.googleusercontent.com/aida-public/AB6AXuA3YAhKs8A9zMKjhC6Jks3cAweQqngfecKze4KtPV7A3sE08JxpA2rrE3kBKLm8fXL_bbZhftfkMPGUS12mrq-Nwx4E5BwXugtyUprVbDv7SG1sjk_u3H_6HgghSy1dmHBoNw4cNM3pMqrwEMbgf8yQFBGFJGFBXrPwJbveaqsxp9q9a5FNSOLhRkE5x-AHpUPWodtU6MX95zJ2jC8rdlDKdnEMNV4uCmLkLFFAgaruY8actRus8AZZit190Okw7icZYlkSnupnNQ4"
+    >
+
+      <template #btn_more>
+        <Button class="text-gray-400 hover:text-primary transition-colors bg-transparent border-none p-0">
+          <span class="material-icons-round">more_vert</span>
+        </Button>
+      </template>
+
+      Experimenting with glass morphism in my latest app concept. What do you think about the blur
+      intensity here? Is it too much? 🌫️✨
+
+      <template #btn_reaction>
+        <Button class="w-10 h-10 rounded-full bg-transparent text-xl hover:scale-125 transition-transform border-2 border-white dark:border-zinc-600 z-30"
+                title="Love it">😍
+        </Button>
+        <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold text-gray-500 dark:text-gray-300 border-2 border-white dark:border-surface-dark z-0">
+          +42
         </div>
-        <button class="text-gray-400 hover:text-primary transition-colors"><span
-            class="material-icons-round">more_vert</span></button>
-      </div>
-      <p class="text-gray-700 dark:text-gray-300 mb-4 font-medium leading-relaxed">
-        Experimenting with glassmorphism in my latest app concept. What do you think about the blur
-        intensity here? Is it too much? 🌫️✨
-      </p>
-      <div class="rounded-2xl overflow-hidden mb-5 relative group">
-        <img alt="Abstract colorful fluid shapes design"
-             class="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500"
-             data-alt="Abstract colorful fluid gradient shapes"
-             src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3YAhKs8A9zMKjhC6Jks3cAweQqngfecKze4KtPV7A3sE08JxpA2rrE3kBKLm8fXL_bbZhftfkMPGUS12mrq-Nwx4E5BwXugtyUprVbDv7SG1sjk_u3H_6HgghSy1dmHBoNw4cNM3pMqrwEMbgf8yQFBGFJGFBXrPwJbveaqsxp9q9a5FNSOLhRkE5x-AHpUPWodtU6MX95zJ2jC8rdlDKdnEMNV4uCmLkLFFAgaruY8actRus8AZZit190Okw7icZYlkSnupnNQ4"/>
-      </div>
-      <!-- Expressive Reactions -->
-      <div class="flex items-center justify-between pt-2">
-        <div class="flex -space-x-3 hover:space-x-1 transition-all duration-300">
-          <button
-              class="w-10 h-10 rounded-full bg-pastel-rose flex items-center justify-center text-xl hover:scale-125 transition-transform shadow-sm border-2 border-white dark:border-surface-dark z-30"
-              title="Love it">😍
-          </button>
-          <button
-              class="w-10 h-10 rounded-full bg-pastel-blue flex items-center justify-center text-xl hover:scale-125 transition-transform shadow-sm border-2 border-white dark:border-surface-dark z-20"
-              title="Cool">❄️
-          </button>
-          <button
-              class="w-10 h-10 rounded-full bg-pastel-purple flex items-center justify-center text-xl hover:scale-125 transition-transform shadow-sm border-2 border-white dark:border-surface-dark z-10"
-              title="Creative">🎨
-          </button>
-          <div
-              class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-xs font-bold text-gray-500 dark:text-gray-300 border-2 border-white dark:border-surface-dark z-0 pl-1">
-            +42
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <button
-              class="flex items-center gap-1.5 text-text-sub dark:text-gray-400 hover:text-primary font-bold text-sm transition-colors">
-            <span class="material-icons-round text-lg">chat_bubble_outline</span>
-            12 Comments
-          </button>
-          <button
-              class="flex items-center gap-1.5 text-text-sub dark:text-gray-400 hover:text-primary font-bold text-sm transition-colors">
-            <span class="material-icons-round text-lg">share</span>
-            Share
-          </button>
-        </div>
-      </div>
-    </article>
+      </template>
+
+      <template #btn_engagement>
+        <Button class="flex items-center bg-transparent border-none gap-1 text-slate-500 dark:text-slate-300 hover:text-primary font-bold text-sm transition-colors">
+          <span class="material-icons-round scale-80">chat_bubble_outline</span>
+          12 Comments
+        </Button>
+        <Button class="flex items-center bg-transparent border-none gap-1 text-slate-500 dark:text-slate-300 hover:text-primary font-bold text-sm transition-colors">
+          <span class="material-icons-round text-lg">share</span>
+          Share
+        </Button>
+      </template>
+    </BasicPostLayout>
 
     <!-- Post 2: Text Based Question -->
     <article class="bg-linear-to-br from-pastel-purple to-white dark:from-purple-900/20 dark:to-surface-dark rounded-3xl p-8 shadow-soft border border-purple-100 dark:border-white/5 relative overflow-hidden">

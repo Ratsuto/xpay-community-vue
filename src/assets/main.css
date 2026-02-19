@@ -48,6 +48,21 @@
     --warning: var(--color-yellow-100);
 }
 
+.pink-mode {
+    --primary: var(--color-pink-400);
+    --primary-hover: var(--color-pink-500);
+    --background-color-light: var(--color-pink-50);
+    --background-card: var(--color-white);
+    --background-secondary: var(--color-pink-100);
+    --border-white: var(--color-white);
+    --secondary: var(--color-pink-100);
+    --secondary-hover: var(--color-pink-200);
+    --success: var(--color-green-500);
+    --danger: var(--color-red-500);
+    --info: var(--color-blue-100);
+    --warning: var(--color-yellow-100);
+}
+
 .glass-mode {
     --primary: var(--color-gray-400);
     --primary-hover: rgba(118, 165, 175);

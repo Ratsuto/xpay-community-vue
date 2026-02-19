@@ -7,6 +7,7 @@ const theme = ref([
   {name: 'Default', value: 'light'},
   {name: 'Indigo', value: 'indigo-mode'},
   {name: 'Blue', value: 'blue-mode'},
+  {name: 'Pink', value: 'pink-mode'},
   {name: 'Glass', value: 'glass-mode'},
   {name: 'Dark', value: 'dark-mode'}
 ])
@@ -42,7 +43,7 @@ const handleSignIn = async () => {
             option:({context})=>({
               class: ['hover:bg-primary/10 hover:text-primary text-sm rounded-xl', context.selected ? 'bg-primary/10 text-primary':'']
             }),
-            overlay:{class: 'rounded-xl'}}"
+            overlay:{class: 'rounded-xl bg-background-card backdrop-blur-sm'}}"
           class="text-sm w-28 rounded-full bg-slate-100/50 dark:bg-zinc-700/50 shadow-none border-transparent focus:border-primary absolute top-4 right-8"/>
 
   <div class="flex flex-col gap-2">
@@ -125,17 +126,6 @@ const handleSignIn = async () => {
         <span class="material-icons-round scale-70">bolt</span>
       </Button>
     </motion.div>
-
-    <!--    <motion.div :initial="{opacity: 0, y:20}"
-                    :animate="{opacity: 1, y:0}"
-                    :transition="{duration: 0.3, delay: 1.2}">
-          <router-link :to="{name: 'Home'}">
-            <Button class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center">
-              <span>Sign In</span>
-              <span class="material-icons-round scale-70">bolt</span>
-            </Button>
-          </router-link>
-        </motion.div>-->
   </form>
 
   <motion.div :initial="{opacity: 0, y:20}"
