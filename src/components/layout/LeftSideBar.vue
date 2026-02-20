@@ -1,5 +1,45 @@
-<script setup lang="ts">
-import {ref} from 'vue';
+<script setup>
+import {ref, onMounted, getCurrentInstance} from "vue";
+import {useConfirm} from "primevue/useconfirm";
+import {useRouter} from 'vue-router';
+
+const axios = getCurrentInstance().appContext.config.globalProperties.$axios;
+const apiUrl = import.meta.env.VITE_API_URL;
+
+const confirm = useConfirm();
+const router = useRouter();
+const users = ref({});
+const operatorID = localStorage.getItem('operatorId');
+
+const logout = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('sessionId');
+  router.push('/');
+}
+
+const requireConfirmation = (event) => {
+  confirm.require({
+    target: event.currentTarget,
+    group: 'headless',
+    message: 'Do you want to logout?',
+    accept: () => {
+      logout();
+    },
+    reject: () => {
+
+    }
+  });
+}
+
+onMounted(async () => {
+  const res = await axios.post(`${apiUrl}/users/get-user-detail`, {username: operatorID})
+  if (res.data.success) {
+    users.value = res.data.data
+  }
+});
+
+localStorage.setItem('userRole', users.ROLE_NAME);
+localStorage.setItem('userRoleType', users.ROLE_TYPE);
 
 const menuItems = [
   {name: 'Discover', route: '/home', icon_name: 'explore'},
@@ -12,7 +52,7 @@ const menuItems = [
 
 <template>
   <!-- Left Sidebar (Navigation) -->
-  <aside class="hidden md:flex flex-col w-72 sticky top-0 h-screen p-6 border-r border-gray-100 dark:border-white/5">
+  <aside class="hidden md:flex flex-col w-72 sticky top-0 h-screen p-6 border-r border-gray-100 dark:border-white/5 text-slate-800 dark:text-white">
 
     <!-- Logo -->
     <div class="flex items-center gap-3 mb-10 px-2">
@@ -41,14 +81,13 @@ const menuItems = [
       <router-link :to="{name:'Profile'}"
                    v-slot="{ isActive, isExactActive}">
         <div :class="['flex items-center gap-3 p-3 rounded-2xl hover:bg-white dark:hover:bg-surface-dark cursor-pointer transition-colors', isExactActive ? 'bg-white': '']">
-          <Avatar
-              image="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1DHmhRcmxtXH6PQlFigWs50SLdwYlPhprdF5-CFUraKuqlv3GTxYo6_bovEtD_K4IVmQIzR8BytqS_GHOvvYl4W1WNmo-LVy8SPCW92_2vINM6Ue24eBpIPMBDPMQ6Cnx8iY0LcE_yKbt_henje6HIjHkoKI7F0N48qLJ0HgP79WJkK0yt1JzOir-Vn1S1r1kONl2lRNy15gTs9LSduHtuqhHjTMAphp3Idjd1tfoT84st16GFWQTOJVOwNGD84Llh6cppL57co"
-              class="w-10 h-10 object-cover ring-2 ring-primary p-0.5"
-              shape="circle"/>
+          <Avatar :image="users.OPERATOR_IMAGE ? `data:image/jpeg;base64,${users.OPERATOR_IMAGE}` : 'src/assets/images/icons/default-image.svg'"
+                  class="object-cover ring-2 ring-primary h-9 w-9"
+                  shape="circle"/>
 
-          <div class="flex flex-col">
-            <span class="font-bold text-sm text-gray-900 dark:text-white">Mia Creative</span>
-            <span class="text-xs text-text-sub dark:text-gray-400">@miamakes</span>
+          <div class="flex flex-col gap-1">
+            <span class="font-bold text-sm">{{ users.OPERATOR_NAME }}</span>
+            <span class="text-xs text-text-sub dark:text-gray-400">@{{ users.OPERATOR_EMAIL.toString().split('@')[0] }}</span>
           </div>
 
           <div class="material-icons-round ml-auto text-gray-400">

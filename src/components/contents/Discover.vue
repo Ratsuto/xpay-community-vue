@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import BasicPostLayout from "@/components/layout/BasicPostLayout.vue";
+import QuestionPostLayout from "@/components/layout/QuestionPostLayout.vue";
 
 const postText = ref("");
 </script>
@@ -124,51 +125,17 @@ const postText = ref("");
       </template>
     </BasicPostLayout>
 
-    <!-- Post 2: Text Based Question -->
-    <article class="bg-linear-to-br from-pastel-purple to-white dark:from-purple-900/20 dark:to-surface-dark rounded-3xl p-8 shadow-soft border border-purple-100 dark:border-white/5 relative overflow-hidden">
-      <div class="material-icons-round absolute -right-4 -bottom-4 text-9xl text-purple-100 dark:text-purple-900/30 z-0 rotate-12">lightbulb</div>
-      <div class="relative z-10">
-        <div class="flex justify-between items-start mb-4">
-          <div class="flex items-center gap-3">
-            <img alt="Author Avatar"
-                 class="w-10 h-10 rounded-full object-cover ring-2 ring-purple-300"
-                 data-alt="User avatar of a woman with curly hair"
-                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAArIUjmjJCqMmR3VjompwX2etFJmihUnurdggMvLpmgWCtqVGnF-Ohzi6BLH1HVdC_REjTrp5kx_4d6nOtclefawfH7iHSuZ-zf9AdfKsgCMDH5M4hfUrRMHoY35quoFoMIalkV37Lv0WSBq-vZDlAAB14wR2EuSOLRjDl4MMULncusFcOPljzj5ZMCLumnSHTAHu3kbJl_9hbHlmreBBUpH5XzzTHKdVZO95ZyoXx_JNschGLNCGa0owQKOYJviD09eiMe9rTXnI"/>
-            <div>
-              <h3 class="font-bold text-gray-900 dark:text-white leading-tight">Sarah Jenkins</h3>
-              <p class="text-xs text-text-sub dark:text-gray-400 font-medium">5 hours ago • <span
-                  class="text-purple-600 bg-purple-50 dark:bg-purple-900/30 px-1.5 py-0.5 rounded-md">Question</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <h2
-            class="text-2xl md:text-3xl font-extrabold text-gray-800 dark:text-gray-100 mb-4 leading-tight">
-          Designers, what's your go-to font pairing for a modern tech blog? 🤔
-        </h2>
-        <p class="text-gray-600 dark:text-gray-300 mb-6 font-medium">I'm currently stuck between
-          Inter/Playfair or Plus Jakarta/Merriweather. Help me out!</p>
-        <!-- Tags -->
-        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="px-3 py-1 bg-white/60 dark:bg-white/10 rounded-lg text-xs font-bold text-purple-700 dark:text-purple-200 border border-purple-100 dark:border-white/10">#Typography</span>
-          <span
-              class="px-3 py-1 bg-white/60 dark:bg-white/10 rounded-lg text-xs font-bold text-purple-700 dark:text-purple-200 border border-purple-100 dark:border-white/10">#WebDesign</span>
-        </div>
-        <div class="flex items-center gap-4 border-t border-purple-100 dark:border-white/10 pt-4">
-          <button
-              class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark rounded-xl shadow-sm text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
-            <span class="material-icons-round text-primary">tips_and_updates</span>
-            24 Answers
-          </button>
-          <button
-              class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark rounded-xl shadow-sm text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
-            <span class="material-icons-round">bookmark_border</span>
-            Save
-          </button>
-        </div>
-      </div>
-    </article>
+    <QuestionPostLayout username="Sarah Jenkins"
+                        time="5 hours ago"
+                        :status="false"
+                        title="Designers, what's your go-to font pairing for a modern tech blog? 🤔"
+                        postType="Question"
+                        :hashTag="['#Typography','#WebDesign']"
+                        avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuAArIUjmjJCqMmR3VjompwX2etFJmihUnurdggMvLpmgWCtqVGnF-Ohzi6BLH1HVdC_REjTrp5kx_4d6nOtclefawfH7iHSuZ-zf9AdfKsgCMDH5M4hfUrRMHoY35quoFoMIalkV37Lv0WSBq-vZDlAAB14wR2EuSOLRjDl4MMULncusFcOPljzj5ZMCLumnSHTAHu3kbJl_9hbHlmreBBUpH5XzzTHKdVZO95ZyoXx_JNschGLNCGa0owQKOYJviD09eiMe9rTXnI"
+    >
+
+    </QuestionPostLayout>
+
     <!-- Post 3: Poll -->
     <article
         class="bg-white dark:bg-surface-dark rounded-3xl p-6 shadow-soft hover:shadow-lg transition-shadow duration-300 border border-gray-50 dark:border-white/5">

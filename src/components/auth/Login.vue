@@ -1,7 +1,19 @@
 <script setup>
-import {onMounted, ref, watch} from 'vue'
+import {onMounted, ref, watch, getCurrentInstance} from 'vue'
 import {motion} from "motion-v";
-import router from "@/router/index.js";
+import {useRouter} from 'vue-router';
+import {useToast} from "primevue/usetoast";
+import {encryptPayload} from "@/assets/utils/Encryption.js";
+import {baseRequest} from "@/assets/utils/BaseRequest.js";
+
+const axios = getCurrentInstance().appContext.config.globalProperties.$axios;
+const apiUrl = import.meta.env.VITE_API_URL;
+
+const toast = useToast();
+const router = useRouter();
+const username = ref('');
+const password = ref('');
+const isSignInClick = ref(false);
 
 const theme = ref([
   {name: 'Default', value: 'light'},
@@ -28,11 +40,62 @@ onMounted(() => {
 })
 
 const handleSignIn = async () => {
-  await router.push({name: 'Home'});
+  isSignInClick.value = true;
+  baseRequest.username = username.value;
+  baseRequest.password = password.value;
+
+  const encryptedData = encryptPayload({
+    username: username.value,
+    password: password.value,
+    baseRequest: baseRequest,
+  });
+
+  try {
+    const resp = await axios.post(`${apiUrl}/auth/login`, {
+      encryptedData: encryptedData
+    });
+
+    if (!resp.data?.success) {
+      toast.add({
+        severity: 'error',
+        summary: 'Failed',
+        detail: resp.data?.message || 'Login failed',
+        life: 3000
+      });
+      isSignInClick.value = false;
+      return;
+    }
+
+    const retrievedData = resp.data.result;
+
+    localStorage.setItem('token', retrievedData.token);
+    localStorage.setItem('sessionId', retrievedData.sessionId);
+    localStorage.setItem('operatorId', username.value);
+
+    toast.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: resp.data.message,
+      life: 3000
+    });
+
+    await router.push('/home');
+  } catch (e) {
+    isSignInClick.value = false;
+
+    toast.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: e.message,
+      life: 3000
+    });
+  }
 }
 </script>
 
 <template>
+  <Toast position="top-center" :pt="{message:{class:'rounded-2xl'}, messageIcon:{class:'mt-0.5'}}"/>
+
   <Select v-model="selectedTheme"
           :options="theme"
           optionLabel="name"
@@ -43,8 +106,9 @@ const handleSignIn = async () => {
             option:({context})=>({
               class: ['hover:bg-primary/10 hover:text-primary text-sm rounded-xl', context.selected ? 'bg-primary/10 text-primary':'']
             }),
-            overlay:{class: 'rounded-xl bg-background-card backdrop-blur-sm'}}"
-          class="text-sm w-28 rounded-full bg-slate-100/50 dark:bg-zinc-700/50 shadow-none border-transparent focus:border-primary absolute top-4 right-8"/>
+            overlay:{class: 'rounded-xl bg-background-card dark:bg-zinc-700 backdrop-blur-sm'}}"
+          class="text-sm w-28 text-center rounded-full bg-slate-100/50 dark:bg-zinc-700/50 shadow-none border-transparent focus:border-primary absolute top-4 right-8"
+  />
 
   <div class="flex flex-col gap-2">
     <motion.div :initial="{opacity: 0, y:20}"
@@ -74,13 +138,13 @@ const handleSignIn = async () => {
     <motion.div :initial="{opacity: 0, y:20}"
                 :animate="{opacity: 1, y:0}"
                 :transition="{duration: 0.3, delay: 0.6}">
-      <label class="block text-sm font-semibold mb-2 px-1" for="email">Email Address</label>
+      <label class="block text-sm font-semibold mb-2 px-1" for="email">Username / Email</label>
       <div class="relative flex items-center group">
         <i class="absolute pi pi-envelope pl-4 text-slate-500 dark:text-slate-300"></i>
         <InputText class="w-full h-12 bg-slate-100 dark:bg-zinc-600 shadow-none border-transparent focus:border-primary pl-10 rounded-full"
                    id="email"
-                   placeholder="hello@sparkle.com"
-                   type="email"/>
+                   v-model="username"
+                   placeholder="ABCxxxxx"/>
       </div>
     </motion.div>
 
@@ -96,6 +160,7 @@ const handleSignIn = async () => {
         <i class="absolute pi pi-lock z-1 pl-4 text-slate-500 dark:text-slate-300"></i>
         <Password toggleMask fluid
                   :feedback="false"
+                  v-model="password"
                   class="w-full"
                   input-class="h-12 bg-slate-100 dark:bg-zinc-600 shadow-none border-transparent focus:border-primary pl-10 rounded-full"
                   id="password"
@@ -120,10 +185,12 @@ const handleSignIn = async () => {
     <motion.div :initial="{opacity: 0, y:20}"
                 :animate="{opacity: 1, y:0}"
                 :transition="{duration: 0.3, delay: 1.2}">
-      <Button @click="handleSignIn" class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center"
-              type="submit">
+      <Button @click="handleSignIn"
+              :disabled="isSignInClick"
+              class="w-full h-11 bg-primary hover:bg-primary-hover border-none rounded-full text-white transition-all active:scale-[0.98] flex items-center justify-center"
+              type="button">
         <span>Sign In</span>
-        <span class="material-icons-round scale-70">bolt</span>
+        <span :class="['material-icons-round scale-70', !isSignInClick ? '': 'animate-spin']">{{ !isSignInClick ? 'bolt' : 'donut_large' }}</span>
       </Button>
     </motion.div>
   </form>

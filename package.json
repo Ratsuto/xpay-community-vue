@@ -12,6 +12,7 @@
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.13.5",
+    "crypto-js": "^4.2.0",
     "lucide-vue-next": "^0.564.0",
     "material-symbols": "^0.40.2",
     "motion-v": "^2.0.0-beta.3",

@@ -8,6 +8,18 @@ const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
+const operatorName = ref('');
+const operatorID = ref('');
+const operatorPass = ref('');
+const operatorPassConfirm = ref('');
+const operatorEmail = ref('');
+const operatorImage = ref(null);
+const src = ref(null);
+let visible = ref(false);
+const isRegClick = ref(false);
+const roles = ref([]);
+const operatorRole = ref();
+
 </script>
 
 <template>
